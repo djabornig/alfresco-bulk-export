@@ -35,7 +35,6 @@ import org.alfresco.extensions.bulkexport.controler.Engine;
 import org.alfresco.extensions.bulkexport.utils.ExportUtils;
 import org.alfresco.model.ContentModel;
 import org.alfresco.repo.action.ActionModel;
-import org.alfresco.repo.publishing.PublishingModel;
 import org.alfresco.repo.version.VersionModel;
 import org.alfresco.service.ServiceRegistry;
 import org.alfresco.service.cmr.model.FileFolderService;
@@ -57,7 +56,6 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
 import com.ibm.icu.text.SimpleDateFormat;
-
 
 /**
  * Implementation of {@link AlfrescoExportDao} interface
@@ -114,8 +112,7 @@ public class AlfrescoExportDaoImpl implements AlfrescoExportDao
             ContentModel.TYPE_LINK,
             ContentModel.TYPE_RATING,
             ActionModel.TYPE_ACTION,
-            ActionModel.TYPE_COMPOSITE_ACTION,
-            PublishingModel.TYPE_PUBLISHING_QUEUE
+            ActionModel.TYPE_COMPOSITE_ACTION
     };
     
     private List<QName> ignoredAspects = Collections.unmodifiableList(
@@ -601,7 +598,16 @@ public class AlfrescoExportDaoImpl implements AlfrescoExportDao
                 Date date = (Date) obj;
                 returnValue = format.format(date);
                 returnValue = returnValue.substring(0, 26) + ":" + returnValue.substring(26);
-            } 
+            }
+            else if (obj instanceof ArrayList)
+            {
+                ArrayList list = (ArrayList) obj;
+                for (Object o : list)
+                {
+                    if (returnValue != "") returnValue += ",";
+                    returnValue += o.toString();
+                }
+            }
             else 
             {
                 
