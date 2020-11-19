@@ -3,10 +3,16 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.alfresco.extencions.sbulkexport</groupId>
 	<artifactId>bulkexport</artifactId>
-	<version>0.7</version>
+	<version>0.8</version>
 	<packaging>amp</packaging>
 
 	<properties>
+		<dependency.alfresco-core.version>7.5</dependency.alfresco-core.version>
+		<dependency.alfresco-data-model.version>8.25</dependency.alfresco-data-model.version>
+		<dependency.alfresco-repository.version>7.43</dependency.alfresco-repository.version>
+		<dependency.alfresco-spring-webscripts.version>6.20</dependency.alfresco-spring-webscripts.version>
+		<dependency.alfresco-messaging-repo.version>1.2.9</dependency.alfresco-messaging-repo.version>
+
 		<module.log.level>ERROR</module.log.level>
 	</properties>
 
@@ -62,19 +68,25 @@
 		<dependency>
 			<groupId>org.alfresco</groupId>
 			<artifactId>alfresco-core</artifactId>
-			<version>4.0.d</version>
+			<version>${dependency.alfresco-core.version}</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.alfresco</groupId>
 			<artifactId>alfresco-repository</artifactId>
-			<version>4.0.d</version>
+			<version>${dependency.alfresco-repository.version}</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.alfresco</groupId>
 			<artifactId>alfresco-data-model</artifactId>
-			<version>4.0.d</version>
+			<version>${dependency.alfresco-data-model.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.alfresco.services</groupId>
+			<artifactId>alfresco-messaging-repo</artifactId>
+			<version>${dependency.alfresco-messaging-repo.version}</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
@@ -84,9 +96,21 @@
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
-			<groupId>org.springframework.extensions.surf</groupId>
+			<groupId>org.alfresco.surf</groupId>
+			<artifactId>spring-surf-core-configservice</artifactId>
+			<version>${dependency.alfresco-spring-webscripts.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.alfresco.surf</groupId>
 			<artifactId>spring-webscripts</artifactId>
-			<version>5.9</version>
+			<version>${dependency.alfresco-spring-webscripts.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.alfresco.surf</groupId>
+			<artifactId>spring-webscripts-api</artifactId>
+			<version>${dependency.alfresco-spring-webscripts.version}</version>
 			<scope>provided</scope>
 		</dependency>
 	</dependencies>
